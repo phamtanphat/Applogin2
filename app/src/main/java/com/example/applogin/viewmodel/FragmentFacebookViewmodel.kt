@@ -28,7 +28,7 @@ class FragmentFacebookViewmodel : ViewModel() , LifecycleObserver {
         }
         return mutableLiveDatafacebook
     }
-
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE) 
     fun loginfacebook( callbackManager: CallbackManager , message : Message){
         LoginManager.getInstance().registerCallback(callbackManager, object  : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult?) {
@@ -56,7 +56,7 @@ class FragmentFacebookViewmodel : ViewModel() , LifecycleObserver {
         })
     }
 
-
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) 
     fun permission() : List<String>{
         return Arrays.asList("user_gender" , "user_birthday")
     }
